@@ -11,7 +11,6 @@ import {
 
 function App() {
   const [show, setShow] = useState(false);
-  const [error, setError] = useState(false);
   const [values, setValues] = useState({
     firstName: "",
     lastName: "",
@@ -30,12 +29,7 @@ function App() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (values) {
-      setShow(true);
-    }
-    else {
-      setError(true)
-    }
+    setShow(true);
   };
 
   return (
@@ -71,15 +65,14 @@ function App() {
             </div>
           )}
           <Form onSubmit={handleSubmit}>
+            {show || <h3 className="text-center">Enter Your Details</h3>}
             <Row className="mt-4 justify-content-center gap-3">
               <Col md={7}>
-                {error && (
-                  <p className="text-danger pb-1">First Name cannot be empty</p>
-                )}
                 <input
                   name="firstName"
                   id="firstName"
                   className="py-2 form-control"
+                  required
                   type="text"
                   value={values.firstName}
                   onChange={handleChange}
@@ -87,13 +80,11 @@ function App() {
                 />
               </Col>
               <Col md={7}>
-                {error && (
-                  <p className="text-danger pb-1">Last Name cannot be empty</p>
-                )}
                 <input
                   name="lastName"
                   id="lastName"
                   className="py-2 form-control"
+                  required
                   type="text"
                   value={values.lastName}
                   onChange={handleChange}
@@ -101,13 +92,11 @@ function App() {
                 />
               </Col>
               <Col md={7}>
-                {error && (
-                  <p className="text-danger pb-1">Email cannot be empty</p>
-                )}
                 <input
                   name="email"
                   id="email"
                   className="py-2 form-control"
+                  required
                   type="email"
                   value={values.email}
                   onChange={handleChange}
@@ -115,13 +104,11 @@ function App() {
                 />
               </Col>
               <Col md={7}>
-                {error && (
-                  <p className="text-danger pb-1">Address cannot be empty</p>
-                )}
                 <input
                   name="address"
                   id="address"
                   className="py-2 form-control"
+                  required
                   type="text"
                   value={values.address}
                   onChange={handleChange}
@@ -130,9 +117,6 @@ function App() {
               </Col>
               <Col md={7}>
                 <legend className="fs-5">Gender</legend>
-                {error && (
-                  <p className="text-danger pb-1">Gender cannot be empty</p>
-                )}
                 <div className="d-flex gap-4">
                   <div>
                     <label className="ms-2" htmlFor="male">
@@ -140,6 +124,7 @@ function App() {
                         name="gender"
                         id="male"
                         value="male"
+                        required
                         type="radio"
                         checked={values.gender === "male"}
                         onChange={handleChange}
@@ -153,6 +138,7 @@ function App() {
                         name="gender"
                         id="female"
                         value="female"
+                        required
                         type="radio"
                         checked={values.gender === "female"}
                         onChange={handleChange}
@@ -165,6 +151,7 @@ function App() {
                       <input
                         name="gender"
                         id="others"
+                        required
                         type="radio"
                         value="others"
                         checked={values.gender === "others"}
@@ -176,12 +163,10 @@ function App() {
                 </div>
               </Col>
               <Col md={7}>
-                {error && (
-                  <p className="text-danger pb-1">First cannot be empty</p>
-                )}
                 <textarea
                   name="bio"
                   id="bio"
+                  required
                   className="py-2 form-control"
                   placeholder="Your Bio"
                   value={values.bio}
