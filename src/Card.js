@@ -10,8 +10,8 @@ const Card = ({
   address: { street, suite, city},
 }) => {
   return (
-    <Col className="bg-card px-3 px-md-5 py-2 shadow-md" lg={4}>
-      <h1 className="display-4 fw-bold">{name}</h1>
+    <Col className="bg-card px-3 px-md-5 py-2 border" lg={5}>
+      <h1 className="display-5 fw-bold">{name}</h1>
       <p>{catchPhrase}</p>
       <div className="pt-3">
         <h3 className="pb-md-3">General Info </h3>
