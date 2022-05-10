@@ -11,7 +11,7 @@ const Card = ({
 }) => {
   return (
     <Col className="bg-card px-3 px-md-5 py-2 shadow" lg={5}>
-      <h1 className="display-3 fw-bold">{name}</h1>
+      <h1 className="display-4 fw-bold">{name}</h1>
       <p>{catchPhrase}</p>
       <div className="pt-3">
         <h3 className="pb-md-3">General Info </h3>
